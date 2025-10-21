@@ -1,0 +1,232 @@
+/* General Styling & Reset */
+:root {
+    --primary-color: #3b5998; /* A professional blue */
+    --secondary-color: #4CAF50; /* A contrasting green */
+    --background-light: #f4f4f4;
+    --background-dark: #333;
+    --text-dark: #333;
+    --text-light: #fff;
+    --font-family: 'Arial', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+
+/* Header & Navigation */
+header {
+    background: var(--primary-color);
+    color: var(--text-light);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#nav-menu a {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 0 15px;
+    transition: color 0.3s;
+}
+
+#nav-menu a:hover {
+    color: var(--secondary-color);
+}
+
+.menu-toggle {
+    display: none; /* Hide on large screens */
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Buttons */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.primary {
+    background: var(--secondary-color);
+    color: var(--text-light);
+}
+
+.primary:hover {
+    background: #45a049;
+}
+
+.secondary {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.secondary:hover {
+    background: var(--primary-color);
+    color: var(--text-light);
+}
+
+/* Hero Section */
+.hero {
+    background: url('church-background.jpg') no-repeat center center/cover; /* ADD YOUR OWN IMAGE HERE */
+    color: var(--text-light);
+    text-align: center;
+    padding: 150px 20px;
+    /* Dark overlay for better text readability */
+    position: relative;
+    z-index: 1;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); 
+    z-index: -1;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+/* Standard Sections */
+section {
+    padding: 60px 5%;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+}
+
+/* Service Cards */
+.card-section {
+    background: var(--background-light);
+}
+
+.service-card {
+    background: var(--text-light);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 400px;
+    transition: transform 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.service-card .time {
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+/* Footer */
+footer {
+    background: var(--background-dark);
+    color: var(--text-light);
+    padding: 40px 5%;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.footer-info, .footer-links {
+    max-width: 300px;
+    margin: 20px;
+    text-align: left;
+}
+
+.footer-links a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.copyright {
+    padding-top: 20px;
+    border-top: 1px solid #444;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    #nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Below the header */
+        left: 0;
+        background: var(--primary-color);
+        padding: 10px 0;
+        z-index: 10;
+    }
+
+    #nav-menu.active {
+        display: flex;
+    }
+
+    #nav-menu a {
+        padding: 10px 20px;
+        text-align: center;
+        border-bottom: 1px solid #44609a;
+    }
+    
+    .menu-toggle {
+        display: block; /* Show on mobile */
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-info, .footer-links {
+        text-align: center;
+    }
+}
