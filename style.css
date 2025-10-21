@@ -1,232 +1,362 @@
-/* General Styling & Reset */
+/* --- BASE STYLES & VARIABLES --- */
 :root {
-    --primary-color: #3b5998; /* A professional blue */
-    --secondary-color: #4CAF50; /* A contrasting green */
-    --background-light: #f4f4f4;
-    --background-dark: #333;
-    --text-dark: #333;
-    --text-light: #fff;
-    --font-family: 'Arial', sans-serif;
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-gray-light: #f4f4f4;
+    --font-primary: 'Montserrat', sans-serif;
 }
 
+/* Import Font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: var(--font-family);
+    font-family: var(--font-primary);
     line-height: 1.6;
-    color: var(--text-dark);
+    background-color: var(--color-white);
+    color: var(--color-black);
 }
 
-/* Header & Navigation */
-header {
-    background: var(--primary-color);
-    color: var(--text-light);
-    padding: 1rem 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-#nav-menu a {
-    color: var(--text-light);
+a {
     text-decoration: none;
-    padding: 0 15px;
+    color: var(--color-black);
     transition: color 0.3s;
 }
 
-#nav-menu a:hover {
-    color: var(--secondary-color);
+a:hover {
+    color: #666; 
 }
 
-.menu-toggle {
-    display: none; /* Hide on large screens */
-    background: transparent;
-    border: none;
-    color: var(--text-light);
-    font-size: 1.5rem;
-    cursor: pointer;
+ul {
+    list-style: none;
 }
 
-/* Buttons */
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.primary {
-    background: var(--secondary-color);
-    color: var(--text-light);
-}
-
-.primary:hover {
-    background: #45a049;
-}
-
-.secondary {
-    background: transparent;
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
-}
-
-.secondary:hover {
-    background: var(--primary-color);
-    color: var(--text-light);
-}
-
-/* Hero Section */
-.hero {
-    background: url('church-background.jpg') no-repeat center center/cover; /* ADD YOUR OWN IMAGE HERE */
-    color: var(--text-light);
-    text-align: center;
-    padding: 150px 20px;
-    /* Dark overlay for better text readability */
-    position: relative;
-    z-index: 1;
-}
-
-.hero::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4); 
-    z-index: -1;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
-
-/* Standard Sections */
-section {
-    padding: 60px 5%;
-    text-align: center;
-}
-
-section h2 {
-    font-size: 2rem;
-    margin-bottom: 40px;
-    color: var(--primary-color);
-}
-
-/* Service Cards */
-.card-section {
-    background: var(--background-light);
-}
-
-.service-card {
-    background: var(--text-light);
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    max-width: 400px;
-    transition: transform 0.3s;
-}
-
-.service-card:hover {
-    transform: translateY(-5px);
-}
-
-.service-card h3 {
-    color: var(--primary-color);
-    margin-bottom: 10px;
-}
-
-.service-card .time {
-    font-weight: bold;
-    color: var(--secondary-color);
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-}
-
-/* Footer */
-footer {
-    background: var(--background-dark);
-    color: var(--text-light);
-    padding: 40px 5%;
-    text-align: center;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+h1, h2, h3 {
+    font-weight: 700;
     margin-bottom: 20px;
 }
 
-.footer-info, .footer-links {
-    max-width: 300px;
-    margin: 20px;
-    text-align: left;
+/* --- HEADER AND NAVIGATION --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    position: fixed; 
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.95); 
+    border-bottom: 1px solid var(--color-black);
 }
 
-.footer-links a {
-    color: var(--secondary-color);
-    text-decoration: none;
-    margin-right: 10px;
+.logo-text {
+    font-size: 1.5em;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--color-black);
 }
 
-.copyright {
-    padding-top: 20px;
-    border-top: 1px solid #444;
+.main-nav ul {
+    display: flex;
+    gap: 30px;
 }
 
-/* Responsive Design for Mobile */
-@media (max-width: 768px) {
-    #nav-menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 60px; /* Below the header */
-        left: 0;
-        background: var(--primary-color);
-        padding: 10px 0;
-        z-index: 10;
-    }
+.main-nav a {
+    text-transform: uppercase;
+    font-weight: 400;
+    padding: 5px 0;
+    position: relative;
+}
 
-    #nav-menu.active {
-        display: flex;
-    }
+/* Subtle Underline Hover Effect */
+.main-nav a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: var(--color-black);
+    transition: width 0.3s ease;
+}
 
-    #nav-menu a {
-        padding: 10px 20px;
-        text-align: center;
-        border-bottom: 1px solid #44609a;
-    }
-    
-    .menu-toggle {
-        display: block; /* Show on mobile */
-    }
+.main-nav a:hover:after {
+    width: 100%;
+    left: 0;
+    background: var(--color-black);
+}
 
-    .hero h1 {
-        font-size: 2rem;
-    }
+/* Donation Button Styling */
+.cta-button {
+    background-color: var(--color-black);
+    color: var(--color-white) !important;
+    padding: 8px 15px;
+    border: 1px solid var(--color-black);
+    font-weight: 700;
+}
 
-    .footer-content {
-        flex-direction: column;
-        align-items: center;
-    }
+.cta-button:hover {
+    background-color: var(--color-white);
+    color: var(--color-black) !important;
+}
 
-    .footer-info, .footer-links {
-        text-align: center;
-    }
+/* --- MAIN PAGE CONTENT LAYOUT --- */
+.content-section {
+    padding: 120px 50px 80px; /* Offset for the fixed header */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content-section h1 {
+    font-size: 2.5em;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-black);
+    margin-bottom: 40px;
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    font-size: 0.9em;
+    margin-top: 40px;
+}
+
+footer a {
+    color: var(--color-white);
+}
+
+/* --- HOME PAGE SPECIFIC STYLES --- */
+.hero-section {
+    /* Use a high-contrast B&W photo placeholder */
+    background-image: url('placeholder-bw-image.jpg'); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.5); 
+    background-blend-mode: darken;
+    color: var(--color-white);
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    font-weight: 700;
+    border-bottom: none; /* No border for hero text */
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+.primary-cta {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    text-transform: uppercase;
+    font-weight: 700;
+    border: 2px solid var(--color-white);
+    transition: all 0.3s;
+}
+
+.primary-cta:hover {
+    background-color: transparent;
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+.quick-links {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.quick-box {
+    flex: 1;
+    padding: 50px;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.black-bg {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+.white-bg {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    border: 1px solid var(--color-gray-light);
+}
+
+.black-bg a {
+    color: var(--color-white);
+    border-bottom: 1px solid var(--color-white);
+}
+
+.white-bg a {
+    color: var(--color-black);
+    border-bottom: 1px solid var(--color-black);
+}
+
+/* --- ABOUT US SPECIFIC STYLES --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.team-member {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid var(--color-black);
+}
+
+.team-member img {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    filter: grayscale(100%); /* Enforce B&W image */
+    margin-bottom: 15px;
+    border-radius: 50%;
+}
+
+.mission-list {
+    margin-top: 30px;
+}
+
+.mission-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-gray-light);
+}
+
+/* --- WATCH PAGE SPECIFIC STYLES --- */
+.sermon-highlight {
+    margin-bottom: 40px;
+}
+
+.video-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.sermon-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.sermon-card {
+    border: 1px solid var(--color-black);
+    padding: 15px;
+    text-align: center;
+}
+
+.sermon-card h3 {
+    font-size: 1.2em;
+}
+
+/* --- EVENTS PAGE SPECIFIC STYLES --- */
+.event-list {
+    margin-top: 30px;
+}
+
+.event-item {
+    display: flex;
+    border-bottom: 1px solid var(--color-black);
+    padding: 20px 0;
+    align-items: center;
+}
+
+.event-date {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: 15px 20px;
+    text-align: center;
+    line-height: 1;
+    margin-right: 30px;
+    flex-shrink: 0;
+}
+
+.event-date .month {
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+.event-date .day {
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.event-info h3 {
+    margin: 0 0 5px 0;
+}
+
+.event-info p {
+    margin: 0;
+}
+
+/* --- DONATION PAGE SPECIFIC STYLES --- */
+.giving-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.option-box {
+    border: 2px solid var(--color-black);
+    padding: 40px 20px;
+}
+
+.option-box h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.donate-cta {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--color-black);
+    color: var(--color-white) !important;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 20px;
+    border: 2px solid var(--color-black);
+}
+
+.donate-cta:hover {
+    background-color: var(--color-white);
+    color: var(--color-black) !important;
 }
